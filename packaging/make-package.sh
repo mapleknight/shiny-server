@@ -54,11 +54,11 @@ make
 pushd ../..
 
 ./external/node/install-node.sh
-./bin/npm install --production
-./bin/npm rebuild
+npm install --production
+npm rebuild
 
 # Need to rebuild ourselves since 'npm install' won't run gyp for us.
-./bin/node ./ext/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js rebuild
+node ./ext/node/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js rebuild
 
 popd
 # END: building in project root ----------------------------
@@ -66,4 +66,4 @@ popd
 "$CPACK" -G "$GENERATOR"
 
 # Now that installer is built, install the devDependencies as well
-(cd ../.. && ./bin/npm install)
+(cd ../.. && npm install)
